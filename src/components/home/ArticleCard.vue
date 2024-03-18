@@ -48,7 +48,6 @@
 </template>
 
 <script setup lang="ts">
-
   interface Props {
     value: any
   }

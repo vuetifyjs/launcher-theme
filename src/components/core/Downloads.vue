@@ -60,7 +60,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { useDisplay } from "vuetify";
   import { useDownloadsStore } from "@/stores/downloads";
   import { useGamesStore } from "@/stores/games";

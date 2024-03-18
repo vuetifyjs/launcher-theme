@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { useFriendsStore } from '@/stores/friends';
 
   const { toggleDrawer } = useFriendsStore();

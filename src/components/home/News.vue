@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-
   import { useHomeStore } from '@/stores/home';
 
   const { articles } = useHomeStore();
