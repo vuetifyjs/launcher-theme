@@ -11,7 +11,7 @@
         class="fill-height ma-0"
       >
         <div
-          class="text-uppercase fill-height d-flex align-center ml-4"
+          class="text-uppercase fill-height d-flex align-center ml-4 cursor-pointer"
           style="flex-grow: inherit;"
           @click="launch()"
         >
@@ -20,17 +20,16 @@
 
         <v-menu
           :close-on-content-click="false"
-          :v-model="menu"
           class="fill-height"
           min-width="100%"
           transition="slide-y-transition"
-          attach
+          location="bottom end"
         >
           <template #activator="{ props }">
             <v-hover v-model="hoverInner">
               <v-sheet
                 :color="!hoverInner ? 'transparent' : 'secondary darken-2'"
-                class="d-flex justify-center align-center transition-swing v-sheet--settings"
+                class="d-flex justify-center align-center transition-swing v-sheet--settings cursor-pointer"
                 height="64"
                 width="64"
                 v-bind="props"
@@ -56,12 +55,15 @@
               title="Auto update"
               @click.stop="autoUpdate = !autoUpdate"
             >
-              <v-list-item-action>
-                <v-switch
-                  :model-value="autoUpdate"
-                  class="ml-auto justify-end"
-                />
-              </v-list-item-action>
+              <template #append>
+                <v-list-item-action>
+                  <v-switch
+                    :model-value="autoUpdate"
+                    class="ml-auto justify-end"
+                    hide-details
+                  />
+                </v-list-item-action>
+              </template>
             </v-list-item>
 
             <v-list-item title="Uninstall" @click="uninstall">
@@ -69,8 +71,8 @@
                 4.82GB
               </v-list-item-subtitle>
             </v-list-item>
-            <v-divider />
-            <v-list-item title="Version">
+            <v-divider class="my-2" />
+            <v-list-item title="Version" >
               <v-list-item-subtitle class="text-right">
                 12032-x64
               </v-list-item-subtitle>
