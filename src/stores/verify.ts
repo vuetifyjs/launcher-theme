@@ -11,16 +11,16 @@ export const useVerifyStore = defineStore('verify', {
   state: ():State => ({
     paused: false,
     cancelled: true,
-    status:0,
-    verifying: null
+    status: 0,
+    verifying: null,
   }),
   actions: {
-    async verifyInstall(value: any) {
+    async verifyInstall (value: any) {
       this.verifying = value
       this.setCancelled(false)
 
       for (let i = 0; i <= 100; i++) {
-        this.status = i;
+        this.status = i
 
         await sleep(200 * Math.random())
         // @ts-ignore
@@ -28,24 +28,24 @@ export const useVerifyStore = defineStore('verify', {
         if (this.paused) await this.paused
       }
 
-      this.$reset();
+      this.$reset()
     },
-    setPaused(value: boolean) {
+    setPaused (value: boolean) {
       this.paused = value
     },
-    setCancelled(value: boolean) {
+    setCancelled (value: boolean) {
       this.cancelled = value
     },
-    setStatus(value: number) {
+    setStatus (value: number) {
       this.status = value
     },
-    setverifying(value: boolean) {
+    setverifying (value: boolean) {
       this.verifying = value
     },
-    reset() {
+    reset () {
       this.$reset()
-    }
-  }
+    },
+  },
 })
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))

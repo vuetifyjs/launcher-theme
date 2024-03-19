@@ -14,8 +14,8 @@
           v-bind="props"
         >
           <v-row
-            class="fill-height ma-0"
             align="center"
+            class="fill-height ma-0"
             justify="center"
           >
             <div class="text-uppercase pa-3">
@@ -43,9 +43,9 @@
           <v-text-field
             v-model="folder"
             class="mb-3"
-            hide-details
-            flat
             variant="solo-inverted"
+            flat
+            hide-details
           >
             <template
               v-if="mdAndUp"
@@ -63,10 +63,10 @@
 
           <v-text-field
             :model-value="path"
+            variant="solo-inverted"
             disabled
             flat
             hide-details
-            variant="solo-inverted"
           >
             <template
               v-if="mdAndUp"
@@ -84,13 +84,13 @@
 
           <div>
             <v-checkbox
-              hide-details
               label="Auto-Update"
+              hide-details
             />
 
             <v-checkbox
-              hide-details
               label="Create Shortcut"
+              hide-details
             />
           </div>
         </v-form>
@@ -100,8 +100,8 @@
         <v-btn
           :disabled="isLoading"
           color="grey-lighten-4"
-          dark
           variant="text"
+          dark
           @click="dialog = false"
         >
           Cancel
@@ -110,8 +110,8 @@
         <v-btn
           :loading="isLoading"
           color="success"
-          dark
           variant="flat"
+          dark
           @click="isLoading = true"
         >
           Install
@@ -124,11 +124,11 @@
 <script setup lang="ts">
   import { useDownloadsStore } from '@/stores/downloads'
   import { useLibraryStore } from '@/stores/library'
-  import { storeToRefs } from 'pinia';
-  import { useDisplay } from 'vuetify';
+  import { storeToRefs } from 'pinia'
+  import { useDisplay } from 'vuetify'
 
-  const { mdAndUp } = useDisplay();
-  const { downloading } = storeToRefs(useDownloadsStore());
+  const { mdAndUp } = useDisplay()
+  const { downloading } = storeToRefs(useDownloadsStore())
   const { setDownloading } = useDownloadsStore()
   const { setInstalled } = useLibraryStore()
   const { installed } = storeToRefs(useLibraryStore())
@@ -138,7 +138,7 @@
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ({})
+    value: () => ({}),
   })
   const dialog = ref(false)
   const folder = ref('c:/')
@@ -148,7 +148,7 @@
   const path = computed(() => {
     return `${folder.value}Game`
   })
-  watch(isLoading, (val) => {
+  watch(isLoading, val => {
     const _downloading = downloading.value.slice()
 
     _downloading.push(props.value.id)

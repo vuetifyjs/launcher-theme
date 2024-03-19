@@ -1,13 +1,13 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
 const DEFAULT_SNACKBAR = Object.freeze({
-  color: "success",
+  color: 'success',
   href: false,
-  msg: "",
-  text: "Close",
+  msg: '',
+  text: 'Close',
   to: false,
   timeout: 6000,
-});
+})
 
 interface State {
   snackbar: {
@@ -21,28 +21,28 @@ interface State {
   value: boolean;
 }
 
-export const useSnackbarStore = defineStore("snackbar", {
+export const useSnackbarStore = defineStore('snackbar', {
   state: (): State => ({
     snackbar: DEFAULT_SNACKBAR,
     value: false,
   }),
   actions: {
-    setSnackbar(value: any) {
+    setSnackbar (value: any) {
       this.snackbar = Object.assign(
         {},
         {
-          color: "success",
+          color: 'success',
           href: false,
-          msg: "",
-          text: "Close",
+          msg: '',
+          text: 'Close',
           to: false,
           timeout: 6000,
         },
         value
-      );
+      )
     },
-    setValue(value: boolean) {
-      this.value = value;
+    setValue (value: boolean) {
+      this.value = value
     },
   },
-});
+})

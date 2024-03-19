@@ -15,8 +15,8 @@
   interface Props {
     value: Array<any>
   }
-  
+
   withDefaults(defineProps<Props>(), {
-    value: () => ([])
+    value: () => ([]),
   })
 </script>

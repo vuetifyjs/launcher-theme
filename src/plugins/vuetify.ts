@@ -21,9 +21,9 @@ export default createVuetify({
           primary: '#FFF',
           secondary: '#1697F6',
           accent: '#8D99AE',
-          background: '#303030'
-        }
+          background: '#303030',
+        },
       },
-    }
+    },
   },
 })

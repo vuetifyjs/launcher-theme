@@ -11,10 +11,10 @@
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ({})
+    value: () => ({}),
   })
 
   onMounted(() => {
-    console.log("props:", props.value);
+    console.log('props:', props.value)
   })
 </script>

@@ -1,11 +1,11 @@
 <template>
   <v-btn
-    location="bottom right"
     color="secondary"
-    icon
+    location="bottom right"
     position="fixed"
     size="large"
     style="z-index: 9; margin: 10px;"
+    icon
     @click="toggleDrawer()"
   >
     <v-icon>mdi-account-multiple</v-icon>
@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useFriendsStore } from '@/stores/friends';
+  import { useFriendsStore } from '@/stores/friends'
 
-  const { toggleDrawer } = useFriendsStore();
+  const { toggleDrawer } = useFriendsStore()
 
 </script>

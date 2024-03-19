@@ -1,125 +1,125 @@
-import { GameType } from "@/types";
-import { defineStore } from "pinia";
+import { GameType } from '@/types'
+import { defineStore } from 'pinia'
 
 interface State {
   games: GameType[];
 }
 
-export const useGamesStore = defineStore("games", {
+export const useGamesStore = defineStore('games', {
   state: (): State => ({
     games: [
       {
         id: 1,
-        name: "Elder Earth",
-        src: "elder-earth",
+        name: 'Elder Earth',
+        src: 'elder-earth',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353040,
       },
       {
         id: 2,
-        name: "Phase",
-        src: "phase",
+        name: 'Phase',
+        src: 'phase',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353031,
       },
       {
         id: 3,
-        name: "Replicate",
-        src: "replicate",
+        name: 'Replicate',
+        src: 'replicate',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353040,
       },
       {
         id: 4,
-        name: "SOL 643",
-        src: "sol643",
+        name: 'SOL 643',
+        src: 'sol643',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353039,
       },
       {
         id: 5,
-        name: "Star Watch",
-        src: "star-watch",
+        name: 'Star Watch',
+        src: 'star-watch',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353040,
       },
       {
         id: 6,
-        buyColor: "#3675A6",
-        name: "Fallen Kingdoms",
-        src: "fallen-kingdoms",
+        buyColor: '#3675A6',
+        name: 'Fallen Kingdoms',
+        src: 'fallen-kingdoms',
         price: 19.99,
         compareAt: 27.99,
-        publisher: "Creten Studios",
+        publisher: 'Creten Studios',
         updated: 1545864353030,
       },
       {
         id: 7,
-        buyColor: "#804C9D",
-        name: "Astras II",
-        src: "astras",
+        buyColor: '#804C9D',
+        name: 'Astras II',
+        src: 'astras',
         price: 6.99,
         compareAt: 6.99,
-        publisher: "Giant Games",
+        publisher: 'Giant Games',
         updated: 1545864353030,
       },
       {
         id: 8,
-        name: "Storm Peak",
-        src: "storm-peak",
+        name: 'Storm Peak',
+        src: 'storm-peak',
         price: 6.99,
         compareAt: 6.99,
-        publisher: "Giant Games",
+        publisher: 'Giant Games',
         updated: 1545864353031,
       },
       {
         id: 9,
-        name: "Atomic 12",
-        src: "atomic",
+        name: 'Atomic 12',
+        src: 'atomic',
         price: 59.99,
         compareAt: 54.34,
-        publisher: "Frostfire Interactive",
+        publisher: 'Frostfire Interactive',
         updated: 1545864353030,
       },
       {
         id: 10,
-        name: "Down Below",
-        src: "down-below",
+        name: 'Down Below',
+        src: 'down-below',
         price: 19.99,
         compareAt: 19.99,
-        publisher: "Deepdive",
+        publisher: 'Deepdive',
         updated: 1545864353040,
       },
     ],
   }),
   getters: {
-    featured(): any[] {
+    featured (): any[] {
       return this.parsedGames
         .sort((a, b) => {
-          if (a.updated < b.updated) return -1;
-          if (a.updated > b.updated) return 1;
-          return 0;
+          if (a.updated < b.updated) return -1
+          if (a.updated > b.updated) return 1
+          return 0
         })
-        .slice(0, 3);
+        .slice(0, 3)
     },
-    parsedGames(state) {
-      return state.games.map((game) => ({
+    parsedGames (state) {
+      return state.games.map(game => ({
         ...game,
         bg: `games/${game.src}/bg.png`,
         bg2: `games/${game.src}/bg2.png`,
         logo: `games/${game.src}/logo.png`,
         avatar: `games/${game.src}/avatar.png`,
-      }));
+      }))
     },
   },
-});
+})

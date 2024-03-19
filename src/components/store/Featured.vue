@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
   import { useGamesStore } from '@/stores/games'
-  import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia'
 
-  const { featured } = storeToRefs(useGamesStore());
+  const { featured } = storeToRefs(useGamesStore())
 </script>

@@ -10,14 +10,14 @@
         </v-list-subheader>
       </router-link>
       <v-row
+        align="center"
         class="fill-height"
         justify="center"
-        align="center"
       >
         <v-col class="text-center">
           <v-img
-            :src="getImgUrl(`../../../assets/${game?.logo}`)"
             :cover="false"
+            :src="getImgUrl(`../../../assets/${game?.logo}`)"
             class="mx-auto mb-5"
             width="200"
           />
@@ -78,8 +78,8 @@
             max-width="400"
           >
             <v-img
-              max-height="250"
               :src="getImgUrl(`../../../assets/${game?.bg2}`)"
+              max-height="250"
             />
           </v-card>
         </v-col>
@@ -90,38 +90,38 @@
         >
           <iframe
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
             frameborder="0"
             height="315"
             src="https://www.youtube.com/embed/7X8II6J-6mU"
             width="100%"
+            allowfullscreen
           />
         </v-col>
       </v-row>
     </v-sheet>
     <v-sheet
-      height="400"
       color="grey-darken-2"
+      height="400"
       tile
     />
     <v-sheet
-      height="200"
       color="grey-darken-3"
+      height="200"
       tile
     />
   </v-container>
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router';
-  import { useGamesStore } from '@/stores/games';
+  import { useRoute } from 'vue-router'
+  import { useGamesStore } from '@/stores/games'
 
-  const { params } = useRoute();
-  const { parsedGames } = useGamesStore();
+  const { params } = useRoute()
+  const { parsedGames } = useGamesStore()
 
   const game = computed(() => {
     return parsedGames.find(game => Number(game.id) === Number(params.id))
   })
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>

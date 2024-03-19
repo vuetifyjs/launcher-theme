@@ -1,10 +1,10 @@
 <template>
-  <v-hover v-model="hover" >
+  <v-hover v-model="hover">
     <v-sheet
       :color="hover || menu ? 'secondary' : 'transparent'"
       class="transition-swing launch-action"
-      tile
       height="64"
+      tile
     >
       <v-row
         align="center"
@@ -12,19 +12,19 @@
       >
         <div
           class="text-uppercase fill-height d-flex align-center ml-4"
-          @click="launch()"
           style="flex-grow: inherit;"
+          @click="launch()"
         >
           {{ hoverInner || menu ? 'Settings' : 'Launch' }}
         </div>
 
         <v-menu
-          :v-model="menu"
           :close-on-content-click="false"
-          attach
+          :v-model="menu"
           class="fill-height"
           min-width="100%"
           transition="slide-y-transition"
+          attach
         >
           <template #activator="{ props }">
             <v-hover v-model="hoverInner">
@@ -49,12 +49,12 @@
               @click="verify"
             />
 
-            <v-list-item @click="createShortcut" title="Create a shortcut" />
+            <v-list-item title="Create a shortcut" @click="createShortcut" />
 
             <v-list-item
               :ripple="false"
-              @click.stop="autoUpdate = !autoUpdate"
               title="Auto update"
+              @click.stop="autoUpdate = !autoUpdate"
             >
               <v-list-item-action>
                 <v-switch
@@ -64,13 +64,13 @@
               </v-list-item-action>
             </v-list-item>
 
-            <v-list-item @click="uninstall" title="Uninstall">
+            <v-list-item title="Uninstall" @click="uninstall">
               <v-list-item-subtitle class="text-caption text-right">
                 4.82GB
               </v-list-item-subtitle>
             </v-list-item>
             <v-divider />
-            <v-list-item title="Version" >
+            <v-list-item title="Version">
               <v-list-item-subtitle class="text-right">
                 12032-x64
               </v-list-item-subtitle>
@@ -94,9 +94,9 @@
                 justify="center"
               >
                 <v-progress-circular
-                  indeterminate
-                  size="64"
                   color="white"
+                  size="64"
+                  indeterminate
                 />
               </v-row>
             </v-img>
@@ -111,7 +111,7 @@
   import { useVerifyStore } from '@/stores/verify'
   import { useLibraryStore } from '@/stores/library'
   import { useSnackbarStore } from '@/stores/snackbar'
-  import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia'
 
   const { verifyInstall } = useVerifyStore()
   const { verifying } = storeToRefs(useVerifyStore())
@@ -124,7 +124,7 @@
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ({})
+    value: () => ({}),
   })
 
   const autoUpdate = ref(true)
@@ -133,8 +133,8 @@
   const hoverInner = ref(false)
   const menu = ref(false)
 
-  watch(dialog, ( value ) => {
-    setTimeout(() => ( dialog.value = false ), 4000)
+  watch(dialog, value => {
+    setTimeout(() => (dialog.value = false), 4000)
   })
 
   const createShortcut = () => {
@@ -160,7 +160,7 @@
     setInstalled(installed.value.filter(id => id !== props.value?.id))
   }
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>
 
 <style lang="scss">

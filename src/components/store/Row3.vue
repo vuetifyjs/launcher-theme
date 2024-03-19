@@ -19,20 +19,20 @@
     >
       <game
         :value="right"
-        tall
         prominent
+        tall
       />
     </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
- interface Props {
+  interface Props {
     value: Array<any>
   }
-  
+
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ([])
+    value: () => ([]),
   })
 
   const right = computed(() => {

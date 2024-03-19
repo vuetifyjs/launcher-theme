@@ -13,9 +13,9 @@
   interface Props {
     value: Array<any>
   }
-  
+
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ([])
+    value: () => ([]),
   })
 
   const game = computed(() => {

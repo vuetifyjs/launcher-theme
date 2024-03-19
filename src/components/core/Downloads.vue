@@ -1,13 +1,13 @@
 <template>
   <v-navigation-drawer
-    :model-value="model"
-    color="grey-darken-3"
     v-if="drawer"
+    :model-value="model"
     :style="styles"
-    disable-resize-watcher
+    color="grey-darken-3"
     position="fixed"
-    touchless
     width="400"
+    disable-resize-watcher
+    touchless
   >
     <template v-if="model">
       <v-row
@@ -33,15 +33,15 @@
         <v-list-item
           v-for="(download, i) in downloads"
           :key="i"
+          :prepend-avatar="getImgUrl(`../../assets/games/astras/avatar.png`)"
           :title="download?.name"
           subtitle="Downloading"
-          :prepend-avatar="getImgUrl(`../../assets/games/astras/avatar.png`)"
         >
           <v-list-item-action>
             <v-progress-circular
-              indeterminate
-              width="2"
               size="48"
+              width="2"
+              indeterminate
             >
               <span>27%</span>
             </v-progress-circular>
@@ -60,34 +60,34 @@
 </template>
 
 <script setup lang="ts">
-  import { useDisplay } from "vuetify";
-  import { useDownloadsStore } from "@/stores/downloads";
-  import { useGamesStore } from "@/stores/games";
-  import { storeToRefs } from 'pinia';
+  import { useDisplay } from 'vuetify'
+  import { useDownloadsStore } from '@/stores/downloads'
+  import { useGamesStore } from '@/stores/games'
+  import { storeToRefs } from 'pinia'
 
-  const { lgAndUp } = useDisplay();
-  const { setDrawer } = useDownloadsStore();
-  const { downloading, drawer } = storeToRefs(useDownloadsStore());
-  const { parsedGames } = storeToRefs(useGamesStore());
+  const { lgAndUp } = useDisplay()
+  const { setDrawer } = useDownloadsStore()
+  const { downloading, drawer } = storeToRefs(useDownloadsStore())
+  const { parsedGames } = storeToRefs(useGamesStore())
   const downloads = computed(() => {
-    return downloading.value.map((download) => {
+    return downloading.value.map(download => {
       return parsedGames.value.find(game => game.id === download.id)
     })
   })
   const model = computed({
-    get:() => {
+    get: () => {
       return drawer.value
     },
-    set:(value: boolean) => {
+    set: (value: boolean) => {
       setDrawer(value)
-    }
+    },
   })
   const styles = computed(() => {
     const styles: { left: number | string } = { left: '200px' }
 
-    if(!lgAndUp) styles.left = 0 
+    if (!lgAndUp) styles.left = 0
     return styles
   })
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>

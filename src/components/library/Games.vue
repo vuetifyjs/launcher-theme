@@ -5,15 +5,15 @@
         v-for="game in games"
         :key="game.id"
         cols="12"
-        sm="6"
         md="4"
+        sm="6"
       >
         <Game
-          :value="game"
           :understate="!game.installed"
+          :value="game"
           dense
+          show-action
           static
-          showAction
         />
       </v-col>
     </v-row>
@@ -24,7 +24,7 @@
   import { useLibraryStore } from '@/stores/library'
   import { storeToRefs } from 'pinia'
 
-  const { games } = storeToRefs(useLibraryStore());
+  const { games } = storeToRefs(useLibraryStore())
 </script>
 
 <style scoped>

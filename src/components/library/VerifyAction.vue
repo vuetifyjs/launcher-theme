@@ -7,19 +7,19 @@
   >
     <v-row
       align="center"
-      justify="center"
       class="fill-height flex-nowrap"
+      justify="center"
     >
       <v-col
-        cols="auto"
         class="pa-0 text-center text-overline"
+        cols="auto"
       >
         Verifying {{ status }}%
       </v-col>
 
       <v-col
-        cols="6"
         class="px-3"
+        cols="6"
       >
         <v-progress-linear
           :model-value="status"
@@ -54,9 +54,9 @@
 
 <script setup lang="ts">
   import { useVerifyStore } from '@/stores/verify'
-  import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia'
 
-  const { paused, status } = storeToRefs(useVerifyStore());
+  const { paused, status } = storeToRefs(useVerifyStore())
   const { setCancelled, reset } = useVerifyStore()
 
   interface Props {
@@ -64,7 +64,7 @@
   }
 
   withDefaults(defineProps<Props>(), {
-    value: () => ({})
+    value: () => ({}),
   })
 
   // const resolve = ref(undefined)
@@ -78,7 +78,7 @@
   }
   const resetVerify = () => {
     setCancelled(true)
-    
+
     setTimeout(reset, 300)
   }
   const startVerify = () => {

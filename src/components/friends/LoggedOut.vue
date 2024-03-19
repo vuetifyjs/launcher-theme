@@ -6,29 +6,28 @@
     >
       <v-window-item class="px-3">
         <v-text-field
+          append-inner-icon="mdi-chevron-right"
           class="py-2"
           label="Email"
-          hide-details
           name="email"
           variant="outlined"
+          hide-details
           single-line
-          append-inner-icon="mdi-chevron-right"
-          @keydown.enter="model++"
           @click:append-inner="model++"
-        >
-      </v-text-field>
+          @keydown.enter="model++"
+        />
       </v-window-item>
 
       <v-window-item class="px-3">
         <v-text-field
           ref="password"
+          append-inner-icon="mdi-login"
           class="py-2"
-          hide-details
           label="Password"
           name="password"
           type="password"
-          append-inner-icon="mdi-login"
           variant="outlined"
+          hide-details
           single-line
           @click:append-inner="login()"
           @keydown.enter="login()"
@@ -39,17 +38,17 @@
 </template>
 
 <script setup lang="ts">
-  import { useAuthStore } from '@/stores/auth';
+  import { useAuthStore } from '@/stores/auth'
 
   const { login } = useAuthStore()
 
-  const model = ref(0);
+  const model = ref(0)
 
   watch(model, (val : number) => {
-    if (val != 1) return
+    if (val !== 1) return
 
     setTimeout(() => {
-      
+
     }, 300)
-  }) 
+  })
 </script>

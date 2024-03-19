@@ -2,8 +2,8 @@
   <section>
     <v-toolbar flat>
       <v-btn
-        icon
         to="/"
+        icon
       >
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
@@ -27,11 +27,11 @@
           :items="items"
           item-title="text"
           item-value="value"
-          prepend-inner-icon="mdi-earth"
           label="Language"
-          flat
-          variant="solo"
+          prepend-inner-icon="mdi-earth"
           style="max-width: 400px"
+          variant="solo"
+          flat
         />
 
         <v-checkbox label="Minimize To System Tray" />
@@ -55,8 +55,8 @@
             </v-list-item>
             <v-list-item
               href="https://community.vuetifyjs.com"
-              target="_blank"
               rel="noopener"
+              target="_blank"
             >
               <v-list-item-title>Support</v-list-item-title>
             </v-list-item>
@@ -79,9 +79,9 @@
 <script setup lang="ts">
   const items = ref([
     {
-        value: 'en',
-        text: 'English (United States)',
-    }
+      value: 'en',
+      text: 'English (United States)',
+    },
   ])
   const language = ref('en')
 </script>

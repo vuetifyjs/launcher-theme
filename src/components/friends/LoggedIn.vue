@@ -1,8 +1,8 @@
 <template>
-  <v-list-item 
-    prepend-avatar="https://cdn.vuetifyjs.com/images/john.png" 
-    title="John Leider"
+  <v-list-item
+    prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
     subtitle="zeroskillz"
+    title="John Leider"
   >
     <template #append>
       <v-btn
@@ -18,5 +18,5 @@
 <script setup lang="ts">
   import { useAuthStore } from '@/stores/auth'
 
-  const authStore = useAuthStore();
+  const authStore = useAuthStore()
 </script>

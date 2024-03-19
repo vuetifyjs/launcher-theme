@@ -6,8 +6,8 @@
     >
       <Game
         :value="left"
-        tall
         prominent
+        tall
       />
     </v-col>
     <v-col
@@ -27,12 +27,12 @@
 </template>
 
 <script setup lang="ts">
- interface Props {
+  interface Props {
     value: Array<any>
   }
-  
+
   const props = withDefaults(defineProps<Props>(), {
-    value: () => ([])
+    value: () => ([]),
   })
 
   const left = computed(() => {

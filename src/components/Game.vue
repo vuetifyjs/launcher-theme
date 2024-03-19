@@ -19,26 +19,26 @@
             justify="center"
           >
             <v-img
-              :src="getImgUrl(`../assets/${value.logo}`)"
               :cover="false"
+              :src="getImgUrl(`../assets/${value.logo}`)"
               max-width="180"
               style="z-index: -1;"
             />
           </v-row>
         </v-img>
       </RouterLink>
-      <div v-if="showAction" >
-        <InstallAction :value="value" v-if="!value.installed" />
-        <VerifyAction :value="value" v-else-if="verifying === value.id" />
-        <LaunchAction :value="value" v-else />
+      <div v-if="showAction">
+        <InstallAction v-if="!value.installed" :value="value" />
+        <VerifyAction v-else-if="verifying === value.id" :value="value" />
+        <LaunchAction v-else :value="value" />
       </div>
     </v-card>
   </v-hover>
 </template>
 
 <script setup lang="ts">
-  import { useVerifyStore } from '@/stores/verify';
-  import { storeToRefs } from 'pinia';
+  import { useVerifyStore } from '@/stores/verify'
+  import { storeToRefs } from 'pinia'
 
   interface Props {
     dense?: boolean
@@ -49,8 +49,8 @@
     understate?: boolean
     value: any
   }
-  
-  const { verifying } = storeToRefs(useVerifyStore());
+
+  const { verifying } = storeToRefs(useVerifyStore())
   const props = withDefaults(defineProps<Props>(), {
     dense: false,
     prominent: false,
@@ -58,7 +58,7 @@
     static: false,
     tall: false,
     understate: false,
-    value: () => ({})
+    value: () => ({}),
   })
 
   const hover = ref(false)
@@ -82,5 +82,5 @@
     }
   })
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>

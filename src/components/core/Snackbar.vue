@@ -26,8 +26,8 @@
 
       <v-btn
         :color="computedColor"
-        :variant="snackbar.color !== 'store' && 'text'"
         :ripple="false"
+        :variant="snackbar.color !== 'store' && 'text'"
         v-bind="bind"
         theme="dark"
         @click="setValue(false)"
@@ -51,27 +51,27 @@
   import { useDisplay } from 'vuetify'
   import { useSnackbarStore } from '@/stores/snackbar'
 
-  const { sm } = useDisplay();
-  const { snackbar, value, setValue } = useSnackbarStore();
+  const { sm } = useDisplay()
+  const { snackbar, value, setValue } = useSnackbarStore()
 
   const bind = computed(() => {
     if (snackbar.to) return { to: snackbar.to }
-      if (snackbar.href) {
-        return {
-          href: snackbar.href,
-          target: '_blank',
-          rel: 'noopener',
-        }
+    if (snackbar.href) {
+      return {
+        href: snackbar.href,
+        target: '_blank',
+        rel: 'noopener',
       }
+    }
 
-      return {}
+    return {}
   })
   const computedColor = computed(() => {
     if (snackbar.color !== 'store') {
-        return !computedIcon() ? 'primary lighten-3' : null
-      }
+      return !computedIcon() ? 'primary lighten-3' : null
+    }
 
-      return 'green'
+    return 'green'
   })
 
   const computedIcon = () => {
@@ -86,13 +86,13 @@
   }
 
   const snack = computed({
-    get() {
-      return value;
+    get () {
+      return value
     },
-    set(val) {
-      setValue(val);
+    set (val) {
+      setValue(val)
     },
-  });
+  })
 
 </script>
 

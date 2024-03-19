@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="6" color="grey-darken-3">
+  <v-card color="grey-darken-3" elevation="6">
     <v-card-title>
       <div>
         <h2
@@ -17,8 +17,8 @@
             size="22"
           >
             <v-icon
-              size="15"
               color="grey-lighten-1"
+              size="15"
               @click="() => {}"
             >
               mdi-pencil
@@ -52,8 +52,8 @@
     value: any
   }
   withDefaults(defineProps<Props>(), {
-    value: () => ({})
+    value: () => ({}),
   })
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>

@@ -4,9 +4,9 @@
       :model-value="friendsDrawer"
       class="bg-black"
       location="right"
+      style="overflow: visible"
       width="325"
       static
-      style="overflow: visible"
     >
       <v-row
         class="mx-0 flex-column fill-height"
@@ -35,16 +35,16 @@
                 v-for="(friend, i) in friends"
                 :key="i"
                 :location="mdAndUp ? 'left' : smAndDown ? 'bottom': ''"
-                :width="mdAndUp ? 200 : undefined"
                 :style="`max-height: 0; min-width: ${smAndDown ? '100%' : undefined }`"
+                :width="mdAndUp ? 200 : undefined"
                 content-class="border"
               >
                 <template #activator="{ props }">
                   <v-list-item
                     v-bind="props"
+                    :append-avatar="friend.game? getImgUrl(`../../assets/${friend.game.logo}`) : null"
                     :value="friend.id"
                     class="px-n3"
-                    :append-avatar = "friend.game? getImgUrl(`../../assets/${friend.game.logo}`) : null"
                   >
                     <template #prepend>
                       <v-avatar
@@ -57,12 +57,12 @@
                   </v-list-item>
                 </template>
 
-                <v-list :bg-color="(mdAndUp ? 'black' : 'grey-darken-4')" >
-                  <v-list-item @click="whisperFriend()" title="Whisper" />
+                <v-list :bg-color="(mdAndUp ? 'black' : 'grey-darken-4')">
+                  <v-list-item title="Whisper" @click="whisperFriend()" />
 
-                  <v-list-item @click="removeFriend()" title="Remove Friend" />
+                  <v-list-item title="Remove Friend" @click="removeFriend()" />
 
-                  <v-list-item @click="blockFriend()" title="Block" />
+                  <v-list-item title="Block" @click="blockFriend()" />
                 </v-list>
               </v-menu>
             </template>
@@ -97,23 +97,23 @@
   import { useDisplay } from 'vuetify'
   import { useFriendsStore } from '@/stores/friends'
   import { useAuthStore } from '@/stores/auth'
-  import { storeToRefs } from 'pinia';
+  import { storeToRefs } from 'pinia'
 
-  const { mdAndUp, smAndDown } = useDisplay();
-  const { friends, drawer, online } = storeToRefs(useFriendsStore());
-  const { setDrawer } = useFriendsStore();
-  const { loggedIn } = storeToRefs(useAuthStore());
+  const { mdAndUp, smAndDown } = useDisplay()
+  const { friends, drawer, online } = storeToRefs(useFriendsStore())
+  const { setDrawer } = useFriendsStore()
+  const { loggedIn } = storeToRefs(useAuthStore())
   const friendsDrawer = computed({
-    get() {
+    get () {
       return drawer.value
     },
-    set(val) {
+    set (val) {
       setDrawer(val.value)
-    }
+    },
   })
 
   const blockFriend = () => {
-        //
+    //
   }
   // const menu = (event: any) => {
   //   //
@@ -125,5 +125,5 @@
     //
   }
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>

@@ -1,25 +1,25 @@
-import { GameType } from "@/types";
-import { defineStore } from "pinia";
+import { GameType } from '@/types'
+import { defineStore } from 'pinia'
 
 interface State {
   drawer: any;
   downloading: GameType[];
 }
 
-export const useDownloadsStore = defineStore("downloads", {
+export const useDownloadsStore = defineStore('downloads', {
   state: (): State => ({
     drawer: null,
     downloading: [],
   }),
   actions: {
-    setDownloading(value: GameType[]) {
-      this.downloading = value;
+    setDownloading (value: GameType[]) {
+      this.downloading = value
     },
-    setDrawer(value: boolean) {
-      this.drawer = value;
+    setDrawer (value: boolean) {
+      this.drawer = value
     },
-    toggleDrawer() {
-      this.drawer = !this.drawer;
+    toggleDrawer () {
+      this.drawer = !this.drawer
     },
   },
-});
+})

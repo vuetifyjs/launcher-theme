@@ -28,9 +28,9 @@
 
       <v-row>
         <v-col
+          class="text-grey-darken-2 text-h6 font-weight-light"
           cols="12"
           md="6"
-          class="text-grey-darken-2 text-h6 font-weight-light"
         >
           <p>
             Nunc nec neque. Vestibulum fringilla pede sit amet augue. Curabitur at lacus ac velit ornare lobortis. Pellentesque commodo eros a enim. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla.
@@ -56,8 +56,8 @@
 
           <v-row
             align="center"
-            justify="space-between"
             class="pt-4 bg-white mx-0 text-grey-darken-2"
+            justify="space-between"
             tag="p"
           >
             <span class="pl-3 subheading">
@@ -65,19 +65,19 @@
             </span>
 
             <div class="d-flex">
-              <v-btn icon class="bg-transparent" variant="flat">
+              <v-btn class="bg-transparent" variant="flat" icon>
                 <v-icon>mdi-discord</v-icon>
               </v-btn>
 
-              <v-btn icon class="bg-transparent" variant="flat">
+              <v-btn class="bg-transparent" variant="flat" icon>
                 <v-icon>mdi-reddit</v-icon>
               </v-btn>
 
-              <v-btn icon class="bg-transparent" variant="flat">
+              <v-btn class="bg-transparent" variant="flat" icon>
                 <v-icon>mdi-twitter</v-icon>
               </v-btn>
 
-              <v-btn icon class="bg-transparent" variant="flat">
+              <v-btn class="bg-transparent" variant="flat" icon>
                 <v-icon>mdi-facebook</v-icon>
               </v-btn>
             </div>
@@ -85,9 +85,9 @@
         </v-col>
 
         <v-col
+          class="mt-5"
           cols="12"
           md="6"
-          class="mt-5"
         >
           <v-card
             class="mx-auto"
@@ -103,17 +103,17 @@
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router';
-  import { useHomeStore } from '@/stores/home';
+  import { useRoute } from 'vue-router'
+  import { useHomeStore } from '@/stores/home'
 
-  const { params } = useRoute();
-  const { articles } = useHomeStore();
+  const { params } = useRoute()
+  const { articles } = useHomeStore()
 
   const article = computed(() => {
     return articles.find(article => article.slug === params.slug)
   })
 
-  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href;
+  const getImgUrl = (imagePath: string) => new URL(`${imagePath}`, import.meta.url).href
 </script>
 
 <style lang="scss">
