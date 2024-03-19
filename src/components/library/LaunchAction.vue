@@ -11,7 +11,7 @@
         class="fill-height ma-0"
       >
         <div
-          class="text-uppercase fill-height d-flex align-center ml-4"
+          class="text-uppercase fill-height d-flex align-center ml-4 cursor-pointer"
           @click="launch()"
           style="flex-grow: inherit;"
         >
@@ -21,16 +21,16 @@
         <v-menu
           :v-model="menu"
           :close-on-content-click="false"
-          attach
           class="fill-height"
           min-width="100%"
           transition="slide-y-transition"
+          location="bottom end"
         >
           <template #activator="{ props }">
             <v-hover v-model="hoverInner">
               <v-sheet
                 :color="!hoverInner ? 'transparent' : 'secondary darken-2'"
-                class="d-flex justify-center align-center transition-swing v-sheet--settings"
+                class="d-flex justify-center align-center transition-swing v-sheet--settings cursor-pointer"
                 height="64"
                 width="64"
                 v-bind="props"
