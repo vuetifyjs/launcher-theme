@@ -30,7 +30,7 @@ export const useVerifyStore = defineStore('verify', {
 
       this.$reset()
     },
-    setPaused (value: boolean) {
+    setPaused (value: any) {
       this.paused = value
     },
     setCancelled (value: boolean) {

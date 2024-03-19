@@ -1,17 +1,19 @@
 <template>
   <v-sheet
     :color="'secondary'"
-    class="transition-swing"
+    class="mt-3"
     height="64"
+    width="100%"
     tile
   >
     <v-row
       align="center"
-      class="fill-height flex-nowrap"
+      class="fill-height flex-nowrap px-2"
       justify="center"
+      style="width: 100%;"
     >
       <v-col
-        class="pa-0 text-center text-overline"
+        class="text-center text-overline"
         cols="auto"
       >
         Verifying {{ status }}%
@@ -57,7 +59,7 @@
   import { storeToRefs } from 'pinia'
 
   const { paused, status } = storeToRefs(useVerifyStore())
-  const { setCancelled, reset } = useVerifyStore()
+  const { setCancelled, reset, setPaused } = useVerifyStore()
 
   interface Props {
     value: Object
@@ -67,14 +69,13 @@
     value: () => ({}),
   })
 
-  // const resolve = ref(undefined)
+  const resolve = ref(undefined)
 
   const pauseVerify = async () => {
-    // const pause = new Promise((resolve) => {
-    //   resolve.value = resolve
-    // })
-
-    // setPaused(pause)
+    const pause = new Promise(resolve => {
+      resolve = resolve
+    })
+    setPaused(pause)
   }
   const resetVerify = () => {
     setCancelled(true)
@@ -82,7 +83,7 @@
     setTimeout(reset, 300)
   }
   const startVerify = () => {
-    // resolve.value && resolve()
-    // setPaused(false)
+    resolve.value &&
+      setPaused(false)
   }
 </script>

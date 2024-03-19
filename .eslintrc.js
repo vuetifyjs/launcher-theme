@@ -7,6 +7,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'standard',
     '@vue/eslint-config-typescript',
+    'vuetify',
   ],
   rules: {
     'no-var': 'error',

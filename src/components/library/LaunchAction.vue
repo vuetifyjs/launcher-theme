@@ -1,111 +1,115 @@
 <template>
-  <v-hover v-model="hover">
-    <v-sheet
-      :color="hover || menu ? 'secondary' : 'transparent'"
-      class="transition-swing launch-action"
-      height="64"
-      tile
-    >
-      <v-row
-        align="center"
-        class="fill-height ma-0"
+  <v-hover>
+    <template #default="{ props:launchActivatorProps, isHovering: hover }">
+      <v-sheet
+        :color="hover || menu ? 'secondary' : 'transparent'"
+        class="launch-action"
+        height="64"
+        v-bind="launchActivatorProps"
+        tile
       >
-        <div
-          class="text-uppercase fill-height d-flex align-center ml-4 cursor-pointer"
-          style="flex-grow: inherit;"
-          @click="launch()"
+        <v-row
+          align="center"
+          class="fill-height ma-0"
         >
-          {{ hoverInner || menu ? 'Settings' : 'Launch' }}
-        </div>
+          <v-hover>
+            <template #default="{ props: settingActivatorProps, isHovering: hoverInner }">
+              <div
+                class="text-uppercase fill-height d-flex align-center ml-4 cursor-pointer"
+                style="flex-grow: inherit;"
+                @click="launch"
+              >
+                {{ hoverInner || menu ? 'Settings' : 'Launch' }}
+              </div>
 
-        <v-menu
-          :close-on-content-click="false"
-          class="fill-height"
-          min-width="100%"
-          transition="slide-y-transition"
-          location="bottom end"
-        >
-          <template #activator="{ props }">
-            <v-hover v-model="hoverInner">
               <v-sheet
                 :color="!hoverInner ? 'transparent' : 'secondary darken-2'"
-                class="d-flex justify-center align-center transition-swing v-sheet--settings cursor-pointer"
+                class="d-flex justify-center align-center v-sheet--settings cursor-pointer"
                 height="64"
                 width="64"
-                v-bind="props"
+                v-bind="settingActivatorProps"
               >
-                <v-icon>
-                  {{ `mdi-${menu ? 'close' : 'cog'}` }}
-                </v-icon>
+                <v-btn variant="plain" icon>
+                  <v-icon>
+                    {{ `mdi-${menu ? 'close' : 'cog'}` }}
+                  </v-icon>
+                  <v-menu
+                    :close-on-content-click="false"
+                    activator="parent"
+                    class="fill-height"
+                    location="bottom end"
+                    min-width="100%"
+                    transition="slide-y-transition"
+                  >
+                    <v-list theme="light">
+                      <v-list-item
+                        :disabled="verifying && verifying !== props.value.id"
+                        title="Verify"
+                        @click="verify"
+                      />
+                      <v-list-item title="Create a shortcut" @click="createShortcut" />
+
+                      <v-list-item
+                        :ripple="false"
+                        title="Auto update"
+                        @click.stop="autoUpdate = !autoUpdate"
+                      >
+                        <template #append>
+                          <v-list-item-action>
+                            <v-switch
+                              :model-value="autoUpdate"
+                              class="ml-auto justify-end"
+                              hide-details
+                            />
+                          </v-list-item-action>
+                        </template>
+                      </v-list-item>
+
+                      <v-list-item title="Uninstall" @click="uninstall">
+                        <v-list-item-subtitle class="text-caption text-right">
+                          4.82GB
+                        </v-list-item-subtitle>
+                      </v-list-item>
+                      <v-divider class="my-2" />
+                      <v-list-item title="Version">
+                        <v-list-item-subtitle class="text-right">
+                          12032-x64
+                        </v-list-item-subtitle>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+                </v-btn>
               </v-sheet>
-            </v-hover>
-          </template>
+            </template>
+          </v-hover>
 
-          <v-list theme="light">
-            <v-list-item
-              :disabled="verifying && verifying !== props.value.id"
-              title="Verify"
-              @click="verify"
-            />
-
-            <v-list-item title="Create a shortcut" @click="createShortcut" />
-
-            <v-list-item
-              :ripple="false"
-              title="Auto update"
-              @click.stop="autoUpdate = !autoUpdate"
-            >
-              <template #append>
-                <v-list-item-action>
-                  <v-switch
-                    :model-value="autoUpdate"
-                    class="ml-auto justify-end"
-                    hide-details
-                  />
-                </v-list-item-action>
-              </template>
-            </v-list-item>
-
-            <v-list-item title="Uninstall" @click="uninstall">
-              <v-list-item-subtitle class="text-caption text-right">
-                4.82GB
-              </v-list-item-subtitle>
-            </v-list-item>
-            <v-divider class="my-2" />
-            <v-list-item title="Version" >
-              <v-list-item-subtitle class="text-right">
-                12032-x64
-              </v-list-item-subtitle>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
-        <v-dialog
-          v-model="dialog"
-          max-width="400"
-        >
-          <v-card>
-            <v-img
-              :src="getImgUrl(`../../assets/${props.value.bg}`)"
-              height="200"
-              cover
-            >
-              <v-row
-                align="center"
-                class="fill-height mx-0"
-                justify="center"
+          <v-dialog
+            v-model="dialog"
+            max-width="400"
+          >
+            <v-card>
+              <v-img
+                :src="getImgUrl(`../../assets/${props.value.bg}`)"
+                height="200"
+                cover
               >
-                <v-progress-circular
-                  color="white"
-                  size="64"
-                  indeterminate
-                />
-              </v-row>
-            </v-img>
-          </v-card>
-        </v-dialog>
-      </v-row>
-    </v-sheet>
+                <v-row
+                  align="center"
+                  class="fill-height mx-0"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    color="white"
+                    size="64"
+                    indeterminate
+                  />
+                </v-row>
+              </v-img>
+            </v-card>
+          </v-dialog>
+        </v-row>
+      </v-sheet>
+    </template>
   </v-hover>
 </template>
 
@@ -132,7 +136,6 @@
   const autoUpdate = ref(true)
   const dialog = ref(false)
   const hover = ref(false)
-  const hoverInner = ref(false)
   const menu = ref(false)
 
   watch(dialog, value => {
