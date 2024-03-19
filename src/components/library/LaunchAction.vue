@@ -56,12 +56,15 @@
               @click.stop="autoUpdate = !autoUpdate"
               title="Auto update"
             >
-              <v-list-item-action>
-                <v-switch
-                  :model-value="autoUpdate"
-                  class="ml-auto justify-end"
-                />
-              </v-list-item-action>
+              <template #append>
+                <v-list-item-action>
+                  <v-switch
+                    :model-value="autoUpdate"
+                    class="ml-auto justify-end"
+                    hide-details
+                  />
+                </v-list-item-action>
+              </template>
             </v-list-item>
 
             <v-list-item @click="uninstall" title="Uninstall">
@@ -69,7 +72,7 @@
                 4.82GB
               </v-list-item-subtitle>
             </v-list-item>
-            <v-divider />
+            <v-divider class="my-2" />
             <v-list-item title="Version" >
               <v-list-item-subtitle class="text-right">
                 12032-x64

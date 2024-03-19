@@ -8,7 +8,7 @@
       <v-hover v-model="hover">
         <v-sheet
           :color="hover && !isLoading ? 'secondary' : 'transparent'"
-          class="transition-swing"
+          class="transition-swing cursor-pointer"
           height="64"
           style="border-radius: 0 0 6px 6px;"
           v-bind="props"
@@ -33,7 +33,7 @@
       </v-hover>
     </template>
 
-    <v-card light>
+    <v-card>
       <v-card-title>
         Choose install location
       </v-card-title>
@@ -83,12 +83,12 @@
           </v-text-field>
 
           <div>
-            <v-checkbox
+            <v-checkbox-btn
               hide-details
               label="Auto-Update"
             />
 
-            <v-checkbox
+            <v-checkbox-btn
               hide-details
               label="Create Shortcut"
             />
@@ -100,7 +100,7 @@
         <v-btn
           :disabled="isLoading"
           color="grey-lighten-4"
-          dark
+          theme="dark"
           variant="text"
           @click="dialog = false"
         >
@@ -110,7 +110,7 @@
         <v-btn
           :loading="isLoading"
           color="success"
-          dark
+          theme="dark"
           variant="flat"
           @click="isLoading = true"
         >
