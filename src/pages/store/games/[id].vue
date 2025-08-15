@@ -99,16 +99,6 @@
         </v-col>
       </v-row>
     </v-sheet>
-    <v-sheet
-      color="grey-darken-2"
-      height="400"
-      tile
-    />
-    <v-sheet
-      color="grey-darken-3"
-      height="200"
-      tile
-    />
   </v-container>
 </template>
 

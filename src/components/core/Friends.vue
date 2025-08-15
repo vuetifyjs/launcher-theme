@@ -34,7 +34,7 @@
               <v-menu
                 v-for="(friend, i) in friends"
                 :key="i"
-                :location="mdAndUp ? 'left' : smAndDown ? 'bottom': ''"
+                :location="mdAndUp ? 'left' : smAndDown ? 'bottom' : undefined"
                 :style="`max-height: 0; min-width: ${smAndDown ? '100%' : undefined }`"
                 :width="mdAndUp ? 200 : undefined"
                 content-class="border"
@@ -42,7 +42,7 @@
                 <template #activator="{ props }">
                   <v-list-item
                     v-bind="props"
-                    :append-avatar="friend.game? getImgUrl(`../../assets/${friend.game.logo}`) : null"
+                    :append-avatar="friend.game? getImgUrl(`../../assets/${friend.game.logo}`) : undefined"
                     :value="friend.id"
                     class="px-n3"
                   >

@@ -10,11 +10,7 @@
     value: any
   }
 
-  const props = withDefaults(defineProps<Props>(), {
+  withDefaults(defineProps<Props>(), {
     value: () => ({}),
-  })
-
-  onMounted(() => {
-    console.log('props:', props.value)
   })
 </script>
