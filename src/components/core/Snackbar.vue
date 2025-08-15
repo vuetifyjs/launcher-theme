@@ -55,10 +55,10 @@
   const { snackbar, value, setValue } = useSnackbarStore()
 
   const bind = computed(() => {
-    if (snackbar.to) return { to: snackbar.to }
+    if (snackbar.to) return { to: '#' }
     if (snackbar.href) {
       return {
-        href: snackbar.href,
+        href: '#',
         target: '_blank',
         rel: 'noopener',
       }
