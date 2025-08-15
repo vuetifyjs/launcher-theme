@@ -39,7 +39,6 @@
   },
   "include": [
     "./typed-router.d.ts",
-    "./vite.config.*",
     "./env.d.ts",
     "./shims.d.ts",
     "./src/**/*",
