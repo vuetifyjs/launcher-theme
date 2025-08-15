@@ -3,7 +3,7 @@
     v-model="snack"
     :color="snackbar.color"
     :style="{
-      marginBottom: sm ? '40px' : null
+      marginBottom: sm ? '40px' : undefined
     }"
     :timeout="snackbar.timeout"
     location="bottom"
@@ -27,7 +27,7 @@
       <v-btn
         :color="computedColor"
         :ripple="false"
-        :variant="snackbar.color !== 'store' && 'text'"
+        :variant="snackbar.color !== 'store' ? 'text' : undefined"
         v-bind="bind"
         theme="dark"
         @click="setValue(false)"
@@ -68,7 +68,7 @@
   })
   const computedColor = computed(() => {
     if (snackbar.color !== 'store') {
-      return !computedIcon() ? 'primary lighten-3' : null
+      return !computedIcon() ? 'primary lighten-3' : undefined
     }
 
     return 'green'
